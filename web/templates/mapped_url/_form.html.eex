@@ -1,0 +1,13 @@
+<%= form_for @changeset, @path, fn(f) -> %>
+  <label>
+    Source: <%= text_input f, :source %>
+    <%= error_tag f, :source %>
+  </label>
+
+  <label>
+    Slug: <%= text_input f, :slug %>
+    <%= error_tag f, :slug %>
+  </label>
+
+  <%= submit("Submit") %>
+<% end %>

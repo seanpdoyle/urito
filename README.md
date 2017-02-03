@@ -1,4 +1,8 @@
-# Urito
+# Urito (pronounced like Dorito :tm:)
+
+Shorten your URI's to something more memorable!
+
+*WARNING*: this is a toy application. Have fun!
 
 To start your Phoenix app:
 

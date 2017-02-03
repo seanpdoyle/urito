@@ -12,6 +12,7 @@ defmodule Urito.Router do
   scope "/", Urito do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/urls", MappedUrlController, only: [:new, :create, :index]
+    get "/", MappedUrlController, :index
   end
 end

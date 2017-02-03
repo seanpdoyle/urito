@@ -1,0 +1,21 @@
+<h1>Shortened URLs</h1>
+
+<%= link to: mapped_url_path(@conn, :new) do %>
+  Shorten a URL!
+<% end %>
+
+<dl data-role="mapped-urls">
+  <%= for mapped_url <- @mapped_urls do %>
+    <dt>Slug:</dt>
+    <dd>
+      <%= mapped_url.slug %>
+    </dd>
+    <dt>Source:</dt>
+
+    <dd>
+      <%= link to: mapped_url.source do %>
+        <%= mapped_url.source %>
+      <% end %>
+    </dd>
+  <% end %>
+</dl>

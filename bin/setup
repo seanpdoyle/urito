@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+# check if phantomjs is installed
+if ! command -v phantomjs >/dev/null; then
+  echo "You must install PhantomJS 2.x before continuing."
+  exit 1
+else
+  phantomjs_version=$(phantomjs -v)
+  major_version="${phantomjs_version%.*.*}"
+
+  if ((major_version < 2)); then
+    echo "Please update your PhantomJS to 2.x before continuing."
+    exit 1
+  fi
+fi
+
+echo "Removing previous build artifacts"
+rm -rf deps _build
+
+# Set up Elixir and Phoenix
+if ! command -v mix >/dev/null; then
+  echo "It looks like you don't have Elixir installed."
+  echo "See http://elixir-lang.org/install.html for instructions."
+  exit 1
+fi
+
+echo "Installing dependencies and compiling"
+mix local.rebar
+mix deps.get
+mix deps.compile
+mix compile

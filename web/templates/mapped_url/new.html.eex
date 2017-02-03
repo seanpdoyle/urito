@@ -1,0 +1,7 @@
+<h1>Shorten a URL</h1>
+
+<%= Urito.MappedUrlView.render(
+  "_form.html",
+  path: mapped_url_path(@conn, :create),
+  changeset: @changeset,
+) %>
