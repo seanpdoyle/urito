@@ -38,7 +38,8 @@ defmodule Urito.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:wallaby, "~> 0.14.0"}]
+     {:ex_machina, "~> 1.0", only: :test},
+     {:wallaby, "~> 0.14.0", only: :test}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

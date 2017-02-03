@@ -6,12 +6,19 @@
 
 <dl data-role="mapped-urls">
   <%= for mapped_url <- @mapped_urls do %>
+    <dt>Shortened:</dt>
+    <dd>
+      <%= link to: redirection_url(@conn, :show, mapped_url.slug) do %>
+        <%= redirection_url(@conn, :show, mapped_url.slug) %>
+      <% end %>
+    </dd>
+
     <dt>Slug:</dt>
     <dd>
       <%= mapped_url.slug %>
     </dd>
-    <dt>Source:</dt>
 
+    <dt>Source:</dt>
     <dd>
       <%= link to: mapped_url.source do %>
         <%= mapped_url.source %>

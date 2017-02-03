@@ -14,5 +14,6 @@ defmodule Urito.Router do
 
     resources "/urls", MappedUrlController, only: [:new, :create, :index]
     get "/", MappedUrlController, :index
+    get "/:slug", RedirectionController, :show
   end
 end

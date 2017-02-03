@@ -4,11 +4,11 @@ defmodule Urito.ShortensUrlTest do
   test "shortens a URL", %{session: session} do
     session
     |> visit(mapped_url_path(Endpoint, :new))
-    |> fill_in("mapped_url_source", with: "https://google.com")
-    |> fill_in("mapped_url_slug", with: "googs")
+    |> fill_in("mapped_url_source", with: "https://example.com")
+    |> fill_in("mapped_url_slug", with: "ex")
     |> submit_mapped_url
 
-    assert has_mapped_url?(session, source: "https://google.com", slug: "googs")
+    assert has_mapped_url?(session, source: "https://example.com", slug: "ex")
   end
 
   test "displays validation errors", %{session: session} do

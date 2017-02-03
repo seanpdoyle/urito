@@ -11,6 +11,6 @@ defmodule Urito.MappedUrl do
   def changeset(model \\ %__MODULE__{}, params \\ %{}) do
     model
     |> cast(params, [:slug, :source])
-    |> validate_required([:source])
+    |> validate_required([:slug, :source])
   end
 end
