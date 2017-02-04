@@ -12,5 +12,6 @@ defmodule Urito.MappedUrl do
     model
     |> cast(params, [:slug, :source])
     |> validate_required([:slug, :source])
+    |> unique_constraint(:slug)
   end
 end
