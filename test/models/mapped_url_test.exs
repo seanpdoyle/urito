@@ -20,6 +20,14 @@ defmodule Urito.MappedUrlTest do
     assert {:slug, { "has already been taken", []}} in changeset.errors
   end
 
+  test ".get_by_slug!" do
+    mapped_url = insert(:mapped_url, slug: "foo-bar")
+
+    record = MappedUrl.get_by_slug!(" fOo-BaR \t")
+
+    assert mapped_url == record
+  end
+
   defp changeset_for(attributes) do
     params = params_for(:mapped_url, attributes)
 
