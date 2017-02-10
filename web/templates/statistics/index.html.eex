@@ -1,0 +1,6 @@
+<h1>Statistics for /<%= @statistics.slug %></h1>
+
+<dl data-role="statistics">
+  <dt>Views</dt>
+  <dd><%= @statistics.views %></dd>
+</dl>

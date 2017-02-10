@@ -4,25 +4,39 @@
   Shorten a URL!
 <% end %>
 
-<dl data-role="mapped-urls">
-  <%= for mapped_url <- @mapped_urls do %>
-    <dt>Shortened:</dt>
-    <dd>
-      <%= link to: redirection_url(@conn, :show, mapped_url.slug) do %>
-        <%= redirection_url(@conn, :show, mapped_url.slug) %>
-      <% end %>
-    </dd>
-
-    <dt>Slug:</dt>
-    <dd>
-      <%= mapped_url.slug %>
-    </dd>
-
-    <dt>Source:</dt>
-    <dd>
-      <%= link to: mapped_url.source do %>
-        <%= mapped_url.source %>
-      <% end %>
-    </dd>
-  <% end %>
-</dl>
+<table data-role="mapped-urls">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Source:</th>
+      <th>Shortened:</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for mapped_url <- @mapped_urls do %>
+      <tr>
+        <td>
+          <%= mapped_url.slug %>
+        </td>
+        <td>
+          <%= link to: mapped_url.source do %>
+            <%= mapped_url.source %>
+          <% end %>
+        </td>
+        <td>
+          <%= link to: redirection_url(@conn, :show, mapped_url.slug) do %>
+            <%= redirection_url(@conn, :show, mapped_url.slug) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link(
+            to: mapped_url_statistics_path(@conn, :index, mapped_url.id),
+          ) do %>
+            Statistics
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

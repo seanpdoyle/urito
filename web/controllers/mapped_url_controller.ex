@@ -24,7 +24,7 @@ defmodule Urito.MappedUrlController do
   end
 
   def index(conn, _params) do
-    mapped_urls = Repo.all(MappedUrl)
+    mapped_urls = MappedUrl |> Repo.all
 
     render(conn, "index.html", mapped_urls: mapped_urls)
   end

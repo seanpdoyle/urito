@@ -1,10 +1,12 @@
 defmodule Urito.MappedUrl do
   alias Urito.Repo
+  alias Urito.Request
   use Urito.Web, :model
 
   schema "mapped_urls" do
     field :slug, :string
     field :source, :string
+    has_many :requests, Request
 
     timestamps()
   end

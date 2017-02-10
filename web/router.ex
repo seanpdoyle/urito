@@ -12,7 +12,9 @@ defmodule Urito.Router do
   scope "/", Urito do
     pipe_through :browser
 
-    resources "/urls", MappedUrlController, only: [:new, :create, :index]
+    resources "/urls", MappedUrlController, only: [:new, :create, :index] do
+      resources "/statistics", StatisticsController, only: [:index]
+    end
     get "/", MappedUrlController, :index
     get "/:slug", RedirectionController, :show
   end

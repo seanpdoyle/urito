@@ -6,6 +6,7 @@ defmodule Urito.AcceptanceCase do
       use Wallaby.DSL
 
       alias Urito.Endpoint
+      import Urito.Factory
       import Urito.Router.Helpers
 
       Application.put_env(:wallaby, :base_url, Urito.Endpoint.url)
