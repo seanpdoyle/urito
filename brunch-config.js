@@ -54,6 +54,19 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    postcss: {
+      processors: [
+        require("autoprefixer")
+      ],
+    },
+    sass: {
+      options: {
+        includePaths: [
+          require("bourbon").includePaths[0],
+          require("bourbon-neat").includePaths[0],
+        ],
+      }
     }
   },
 
@@ -64,6 +77,12 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    styles: {
+      "normalize.css": ["normalize.css"]
+    },
+    whitelist: [
+      "normalize.css",
+    ]
   }
 };
