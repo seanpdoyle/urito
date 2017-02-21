@@ -1,6 +1,24 @@
-<h1>Statistics for /<%= @statistics.slug %></h1>
+<h1>Statistics for /<%= @mapped_url.slug %></h1>
+
+<%= link to: mapped_url_path(@conn, :index) do %>
+  Back
+<% end %>
 
 <dl data-role="statistics">
-  <dt>Views</dt>
-  <dd><%= @statistics.views %></dd>
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Requests</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for statistics <- @mapped_url.statistics do %>
+        <tr>
+          <td><%= format_month(statistics.month) %></td>
+          <td><%= statistics.requests_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </dl>

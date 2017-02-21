@@ -1,10 +1,10 @@
 defmodule Urito.Statistics do
-  defstruct slug: "", views: 0
+  use Urito.Web, :model
 
-  def build(mapped_url) do
-    %__MODULE__{
-      slug: mapped_url.slug,
-      views: Enum.count(mapped_url.requests),
-    }
+  @primary_key false
+  schema "statistics" do
+    belongs_to :mapped_url, MappedUrl
+    field :month, :utc_datetime
+    field :requests_count, :integer
   end
 end

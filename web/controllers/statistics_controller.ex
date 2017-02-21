@@ -1,14 +1,12 @@
 defmodule Urito.StatisticsController do
   use Urito.Web, :controller
   alias Urito.MappedUrl
-  alias Urito.Statistics
 
   def index(conn, %{"mapped_url_id" => mapped_url_id}) do
-    statistics = MappedUrl
+    mapped_url = MappedUrl
                  |> Repo.get!(mapped_url_id)
-                 |> Repo.preload(:requests)
-                 |> Statistics.build
+                 |> Repo.preload(:statistics)
 
-    render conn, "index.html", statistics: statistics
+    render conn, "index.html", mapped_url: mapped_url
   end
 end

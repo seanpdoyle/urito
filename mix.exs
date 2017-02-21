@@ -18,8 +18,17 @@ defmodule Urito.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Urito, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [
+       :phoenix,
+       :phoenix_pubsub,
+       :phoenix_html,
+       :cowboy,
+       :logger,
+       :gettext,
+       :phoenix_ecto,
+       :postgrex,
+       :timex,
+     ]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,9 +45,11 @@ defmodule Urito.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:good_times, "~> 1.1"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ex_machina, "~> 1.0", only: :test},
+     {:timex, "~> 3.0"},
+     {:ex_machina, "~> 2.0", only: :test},
      {:wallaby, "~> 0.14.0", only: :test}]
   end
 

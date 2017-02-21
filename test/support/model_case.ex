@@ -22,6 +22,7 @@ defmodule Urito.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import Urito.ModelCase
+      import Urito.Time
       import Urito.Factory
     end
   end

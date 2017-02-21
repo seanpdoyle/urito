@@ -1,19 +1,23 @@
-defmodule Urito.RequestTest do
+defmodule Urito.StatisticsTest do
   use Urito.ModelCase
 
+  import GoodTimes
   alias Urito.Statistics
 
-  test ".build/1" do
+  test "relies on a SQL view" do
     mapped_url = insert(:mapped_url)
-    insert(:request, mapped_url: mapped_url)
+    insert(:request, mapped_url: mapped_url, inserted_at: a_year_ago() |> cast!)
+    insert(:request, mapped_url: mapped_url, inserted_at: a_month_ago() |> cast!)
+    insert(:request, mapped_url: mapped_url, inserted_at: now() |> cast!)
 
-    statistics = mapped_url
-                 |> Repo.preload(:requests)
-                 |> Statistics.build
+    statistics = Statistics
+                 |> where(mapped_url_id: ^mapped_url.id)
+                 |> Repo.all
 
-    assert %Statistics{
-      slug: mapped_url.slug,
-      views: 1,
-    } == statistics
+    counts = statistics
+             |> Enum.map(fn(s) -> s.requests_count end)
+             |> Enum.sum
+
+    assert counts == 3
   end
 end
