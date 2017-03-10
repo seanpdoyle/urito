@@ -46,6 +46,7 @@ defmodule Urito.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:chartkick, github: "buren/chartkick-ex"},
+     {:ecto, "~> 2.1.0"},
      {:good_times, "~> 1.1"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
