@@ -25,6 +25,7 @@ defmodule Urito.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
+      import Urito.Time
       import Urito.Factory
       import Urito.Router.Helpers
 

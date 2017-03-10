@@ -9,6 +9,7 @@
 
     <title>uri.to: a URL shortener</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <%= render_existing @view_module, "scripts.html", assigns %>
   </head>
 
   <body>
@@ -21,6 +22,7 @@
       </main>
 
     </div> <!-- /container -->
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

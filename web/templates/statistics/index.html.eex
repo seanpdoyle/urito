@@ -4,6 +4,13 @@
   Back
 <% end %>
 
+<%= @mapped_url.statistics
+    |> to_chart_data
+    |> to_json
+    |> Chartkick.line_chart
+    |> raw
+%>
+
 <dl data-role="statistics">
   <table>
     <thead>
