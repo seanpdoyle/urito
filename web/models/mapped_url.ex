@@ -9,6 +9,7 @@ defmodule Urito.MappedUrl do
     field :source, :string
     has_many :requests, Request
     has_many :statistics, Statistics
+    belongs_to :creator, User
 
     timestamps()
   end

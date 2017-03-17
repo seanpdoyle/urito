@@ -13,4 +13,11 @@ defmodule Urito.Factory do
       slug: sequence(:slug, &"slug-#{&1}")
     }
   end
+
+  def user_factory do
+    %Urito.User{
+      email: sequence(:email, &"user-#{&1}@example.com"),
+      hashed_password: "password",
+    }
+  end
 end

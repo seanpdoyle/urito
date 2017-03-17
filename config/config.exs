@@ -17,6 +17,11 @@ config :urito, Urito.Endpoint,
   pubsub: [name: Urito.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :doorman,
+  repo: Urito.Repo,
+  secure_with: Doorman.Auth.Bcrypt,
+  user_module: Urito.User
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
