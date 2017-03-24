@@ -2,6 +2,7 @@ defmodule Urito.MappedUrl do
   alias Urito.Repo
   alias Urito.Request
   alias Urito.Statistics
+  alias Urito.User
   use Urito.Web, :model
 
   schema "mapped_urls" do
