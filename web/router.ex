@@ -10,13 +10,24 @@ defmodule Urito.Router do
     plug Doorman.Login.Session
   end
 
+  pipeline :require_auth do
+    plug Urito.Plugs.RequireAuth
+  end
+
   scope "/", Urito do
-    pipe_through :browser
+    pipe_through [:browser, :require_auth]
 
     resources "/urls", MappedUrlController, only: [:new, :create, :index] do
       resources "/statistics", StatisticsController, only: [:index]
     end
     get "/", MappedUrlController, :index
+  end
+
+  scope "/", Urito do
+    pipe_through :browser
+
+    resources "/sessions", SessionsController, only: [:new, :create]
+
     get "/:slug", RedirectionController, :show
   end
 end

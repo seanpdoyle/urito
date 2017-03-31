@@ -1,0 +1,9 @@
+<%= form_for @conn, sessions_path(@conn, :create), [as: :session], fn form -> %>
+  <header>
+    <h2><%= gettext("Sign In") %>
+  </header>
+
+  <%= email_input form, :email, placeholder: gettext("Email"), autofocus: "true" %>
+  <%= password_input form, :password, placeholder: gettext("Password") %>
+  <%= submit gettext("Sign In") %>
+<% end %>
