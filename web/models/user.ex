@@ -1,6 +1,6 @@
 defmodule Urito.User do
   use Urito.Web, :model
-  # import Doorman.Auth.Bcrypt, only: [hash_password: 1]
+  import Doorman.Auth.Bcrypt, only: [hash_password: 1]
 
   schema "users" do
     field :email, :string

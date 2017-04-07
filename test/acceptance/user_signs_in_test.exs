@@ -7,9 +7,8 @@ defmodule Urito.Feature.UserSignsInTest do
 
     session
     |> visit("/")
-    |> click_link("Sign in")
     |> fill_in("session_email", with: user.email)
-    |> fill_in("session_password", with: user.password)
+    |> fill_in("session_password", with: to_string user.password)
     |> submit_session
 
     assert has_mapped_url?(session, mapped_url)
