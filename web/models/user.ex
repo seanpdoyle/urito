@@ -10,12 +10,18 @@ defmodule Urito.User do
     timestamps()
   end
 
-  @doc """
-  Builds a changeset based on the `struct` and `params`.
-  """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :hashed_password])
-    |> validate_required([:email, :hashed_password])
+    |> cast(params, [:email])
+    |> validate_required([:email])
+    |> unique_constraint(:email)
+  end
+
+  def registration_changeset(struct, params \\ %{}) do
+    struct
+    |> changeset(params)
+    |> cast(params, [:password])
+    |> hash_password
+    |> validate_required([:password, :hashed_password])
   end
 end

@@ -1,9 +1,16 @@
-<%= form_for @conn, user_path(@conn, :create), [as: :user], fn form -> %>
+<%= form_for @changeset, user_path(@conn, :create), [as: :user], fn form -> %>
   <header>
     <h2><%= gettext("Sign Up") %>
   </header>
 
-  <%= email_input form, :email, placeholder: gettext("Email"), autofocus: "true" %>
-  <%= password_input form, :password, placeholder: gettext("Password") %>
+  <label>
+    <%= email_input form, :email, placeholder: gettext("Email"), autofocus: "true" %>
+    <%= error_tag form, :email %>
+  </label>
+
+  <label>
+    <%= password_input form, :password, placeholder: gettext("Password") %>
+    <%= error_tag form, :password %>
+  </label>
   <%= submit gettext("Sign Up") %>
 <% end %>
