@@ -1,4 +1,4 @@
-defmodule Urito.UsersController do
+defmodule Urito.UserController do
   use Urito.Web, :controller
 
   def create(conn, %{}) do

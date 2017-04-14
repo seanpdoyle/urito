@@ -4,7 +4,7 @@ defmodule Urito.Feature.UserRegistersTest do
 
   test "user registers", %{session: session} do
     session
-    |> visit(users_path(Endpoint, :new))
+    |> visit(user_path(Endpoint, :new))
     |> fill_in("user_email", with: "user@example.com")
     |> fill_in("user_password", with: "password")
     |> submit_user
