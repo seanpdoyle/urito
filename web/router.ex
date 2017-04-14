@@ -30,6 +30,7 @@ defmodule Urito.Router do
   scope "/", Urito do
     pipe_through :browser
 
+    resources "/users", UsersController, only: [:new, :create]
     resources "/sessions", SessionsController, only: [:new, :create]
 
     get "/:slug", RedirectionController, :show
