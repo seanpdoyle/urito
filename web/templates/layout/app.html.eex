@@ -18,6 +18,12 @@
       <p class="alert alert-danger" role="alert" data-role="error"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
+        <nav>
+          <% if logged_in?(@conn) do %>
+            <%= button(gettext("Sign Out"), to: session_path(@conn, :delete), method: :delete) %>
+          <% end %>
+        </nav>
+
         <%= render @view_module, @view_template, assigns %>
       </main>
 

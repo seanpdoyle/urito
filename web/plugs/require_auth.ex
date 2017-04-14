@@ -13,7 +13,7 @@ defmodule Urito.Plugs.RequireAuth do
       conn
       |> put_session(:redirect_path, conn.request_path)
       |> put_flash(:error, gettext("You must sign in to see this page"))
-      |> redirect(to: Helpers.sessions_path(conn, :new))
+      |> redirect(to: Helpers.session_path(conn, :new))
       |> halt
     end
   end

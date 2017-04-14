@@ -31,7 +31,7 @@ defmodule Urito.Router do
     pipe_through :browser
 
     resources "/users", UserController, only: [:new, :create]
-    resources "/sessions", SessionsController, only: [:new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
 
     get "/:slug", RedirectionController, :show
   end

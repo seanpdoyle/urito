@@ -1,6 +1,6 @@
-defmodule Urito.SessionsController do
+defmodule Urito.SessionController do
   use Urito.Web, :controller
-  import Doorman.Login.Session, only: [login: 2]
+  import Doorman.Login.Session, only: [login: 2, logout: 1]
 
   def new(conn, _params) do
     render(conn, :new)
@@ -15,7 +15,13 @@ defmodule Urito.SessionsController do
     else
       conn
       |> put_flash(:error, gettext("No user found with the provided credentials"))
-      |> redirect(to: sessions_path(conn, :new))
+      |> redirect(to: session_path(conn, :new))
     end
+  end
+
+  def delete(conn, _params) do
+    conn
+    |> logout
+    |> redirect(to: session_path(conn, :new))
   end
 end

@@ -6,6 +6,7 @@ defmodule Urito.AcceptanceCase do
       use Wallaby.DSL
 
       alias Urito.Endpoint
+      import Urito.FeatureHelpers
       import Urito.Factory
       import Urito.Router.Helpers
 
