@@ -3,6 +3,7 @@ defmodule Urito.ShortensUrlTest do
 
   test "shortens a URL", %{session: session} do
     user = insert(:user)
+
     session
     |> visit(mapped_url_path(Endpoint, :new, as: user))
     |> fill_in("mapped_url_source", with: "https://example.com")
@@ -13,8 +14,10 @@ defmodule Urito.ShortensUrlTest do
   end
 
   test "displays validation errors", %{session: session} do
+    user = insert(:user)
+
     session
-    |> visit(mapped_url_path(Endpoint, :new))
+    |> visit(mapped_url_path(Endpoint, :new, as: user))
     |> fill_in("mapped_url_slug", with: "invalid!")
     |> submit_mapped_url
 

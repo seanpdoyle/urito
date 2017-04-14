@@ -6,12 +6,12 @@ defmodule Urito.Plugs.SessionBackdoor do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-      case conn.query_params do
-        %{"as" => id} ->
-          user = Repo.get!(User, id)
-          conn
-          |> login(user)
-        _ -> conn
-      end
+    case conn.query_params do
+      %{"as" => id} ->
+        user = Repo.get!(User, id)
+
+        login(conn, user)
+      _ -> conn
+    end
   end
 end

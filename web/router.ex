@@ -9,8 +9,8 @@ defmodule Urito.Router do
     plug :put_secure_browser_headers
     plug Doorman.Login.Session
 
-    if Mix.env == "test" do
-      plug Urito.SessionBackdoor
+    if Mix.env == :test do
+      plug Urito.Plugs.SessionBackdoor
     end
   end
 
