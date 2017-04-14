@@ -10,6 +10,7 @@ defmodule Urito.Feature.UserRegistersTest do
     |> submit_user
 
     assert has_flash?(session, gettext("Welcome!"))
+    assert has_text?(find(session, "body"), gettext("Shortened URLs"))
   end
 
   test "displays validation errors", %{session: session} do

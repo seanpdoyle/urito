@@ -1,4 +1,4 @@
-<h1>Shortened URLs</h1>
+<h1><%= gettext("Shortened URLs") %></h1>
 
 <%= link to: mapped_url_path(@conn, :new) do %>
   Shorten a URL!
